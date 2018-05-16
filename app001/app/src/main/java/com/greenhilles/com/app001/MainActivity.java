@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,11 +20,12 @@ public class MainActivity extends AppCompatActivity {
         setupBottomNavigation();
 
         if (savedInstanceState == null) {
-            loadHomeFragment();
+            loadHomeFragment(true);
+            loadBlogfragment(true);
+            loadReservationfragment(true);
+            loadHomeFragment(false);
         }
 
-        //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
 
@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        loadHomeFragment();
+                        loadHomeFragment(false);
                         return true;
                     case R.id.navigation_dashboard:
-                        loadReservationfragment();
+                        loadReservationfragment(false);
                         return true;
                     case R.id.navigation_notifications:
-                        loadBlogfragment();
+                        loadBlogfragment(false);
                         return true;
                 }
                 return false;
@@ -54,25 +54,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private HomeFragment homeFragment;
+    private ReservationFragment reserveFragment;
+    private BlogFragment blogFragment;
+    private FragmentTransaction ft;
 
-    private void loadHomeFragment() {
-        HomeFragment fragment = HomeFragment.newInstance();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_frame, fragment);
-        ft.commit();
+    private void loadHomeFragment(boolean isInit) {
+        if(isInit){
+            homeFragment = HomeFragment.newInstance();
+
+        }else{
+            ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_frame, homeFragment);
+            ft.commit();
+        }
     }
 
-    private void loadReservationfragment() {
-        ReservationFragment fragment = ReservationFragment.newInstance();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_frame, fragment);
-        ft.commit();
+    private void loadReservationfragment(boolean isInit) {
+        if(isInit){
+            reserveFragment = ReservationFragment.newInstance();
+        }else{
+            ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_frame, reserveFragment);
+            ft.commit();
+        }
     }
 
-    private void loadBlogfragment() {
-        BlogFragment fragment = BlogFragment.newInstance();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_frame, fragment);
-        ft.commit();
+    private void loadBlogfragment(boolean isInit) {
+        if(isInit){
+            blogFragment = BlogFragment.newInstance();
+        }else{
+            ft = getFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_frame, blogFragment);
+            ft.commit();
+        }
     }
 }

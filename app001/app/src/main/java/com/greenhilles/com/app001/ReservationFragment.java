@@ -6,6 +6,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 /**
  * Created by toshiyukiyoshizawa on 2018/05/15.
@@ -20,6 +23,15 @@ public class ReservationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.reservation, container, false);
+        View rootView = inflater.inflate(R.layout.reservation, container, false);
+
+        WebView mWebView = (WebView) rootView.findViewById(R.id.WebViewReserve);
+
+        mWebView.loadUrl("https://www.vlcm.net/rc/pc/index.php?action_CRA01_01do=true&cid=00056");
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        mWebView.setWebViewClient(new WebViewClient());
+        return rootView;
     }
 }

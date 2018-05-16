@@ -28,7 +28,7 @@ public class BlogFragment extends Fragment {
 
         WebView mWebView = (WebView) rootView.findViewById(R.id.WebViewBlog);
 
-        mWebView.loadUrl("https://www.vlcm.net/rc/pc/index.php?action_CRA01_01do=true&cid=00056");
+        mWebView.loadUrl("http://www.ghfutsal.jp/wordpress/");
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
