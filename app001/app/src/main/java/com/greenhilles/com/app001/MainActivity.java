@@ -20,15 +20,9 @@ public class MainActivity extends AppCompatActivity {
         setupBottomNavigation();
 
         if (savedInstanceState == null) {
-            loadHomeFragment(true);
-            loadBlogfragment(true);
-            loadReservationfragment(true);
-            loadHomeFragment(false);
+            createFragment();
         }
-
     }
-
-
 
     private void setupBottomNavigation() {
 
@@ -40,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        loadHomeFragment(false);
+                        loadHomeFragment();
                         return true;
                     case R.id.navigation_dashboard:
-                        loadReservationfragment(false);
+                        loadReservationfragment();
                         return true;
                     case R.id.navigation_notifications:
-                        loadBlogfragment(false);
+                        loadBlogfragment();
                         return true;
                 }
                 return false;
@@ -59,34 +53,22 @@ public class MainActivity extends AppCompatActivity {
     private BlogFragment blogFragment;
     private FragmentTransaction ft;
 
-    private void loadHomeFragment(boolean isInit) {
-        if(isInit){
-            homeFragment = HomeFragment.newInstance();
+    private  void createFragment(){
+        homeFragment = HomeFragment.newInstance();
+        reserveFragment = ReservationFragment.newInstance();
+        blogFragment = BlogFragment.newInstance();
 
-        }else{
-            ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_frame, homeFragment);
-            ft.commit();
-        }
     }
 
-    private void loadReservationfragment(boolean isInit) {
-        if(isInit){
-            reserveFragment = ReservationFragment.newInstance();
-        }else{
-            ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_frame, reserveFragment);
-            ft.commit();
-        }
+    private void loadHomeFragment() {
+        getFragmentManager().beginTransaction().replace(R.id.fragment_frame, homeFragment).commit();
     }
 
-    private void loadBlogfragment(boolean isInit) {
-        if(isInit){
-            blogFragment = BlogFragment.newInstance();
-        }else{
-            ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_frame, blogFragment);
-            ft.commit();
-        }
+    private void loadReservationfragment() {
+        getFragmentManager().beginTransaction().replace(R.id.fragment_frame, reserveFragment).commit();
+    }
+
+    private void loadBlogfragment() {
+        getFragmentManager().beginTransaction().replace(R.id.fragment_frame, blogFragment).commit();
     }
 }

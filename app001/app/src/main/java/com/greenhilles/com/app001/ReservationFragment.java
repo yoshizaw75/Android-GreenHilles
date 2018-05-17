@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
+import android.graphics.Bitmap;
 /**
  * Created by toshiyukiyoshizawa on 2018/05/15.
  */
@@ -27,11 +27,12 @@ public class ReservationFragment extends Fragment {
 
         WebView mWebView = (WebView) rootView.findViewById(R.id.WebViewReserve);
 
-        mWebView.loadUrl("https://www.vlcm.net/rc/pc/index.php?action_CRA01_01do=true&cid=00056");
+
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.setWebViewClient(new ProgressDialgWebViewClient(inflater.getContext(), "Page Loading..."));
+        mWebView.loadUrl("https://www.vlcm.net/rc/pc/index.php?action_CRA01_01do=true&cid=00056");
         return rootView;
     }
 }

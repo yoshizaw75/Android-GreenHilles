@@ -3,6 +3,7 @@ package com.greenhilles.com.app001;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,11 +29,12 @@ public class BlogFragment extends Fragment {
 
         WebView mWebView = (WebView) rootView.findViewById(R.id.WebViewBlog);
 
-        mWebView.loadUrl("http://www.ghfutsal.jp/wordpress/");
+
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        mWebView.setWebViewClient(new ProgressDialgWebViewClient(inflater.getContext(), "Page Loading..."));
+        mWebView.loadUrl("http://www.ghfutsal.jp/wordpress/");
 
-        mWebView.setWebViewClient(new WebViewClient());
         return rootView;
     }
 }
