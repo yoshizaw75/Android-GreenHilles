@@ -1,16 +1,21 @@
 package com.greenhilles.com.app001;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView mBottomNavigationView;
-
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,20 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             createFragment();
         }
+
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //電話アプリ起動
+                Intent intentcall = new Intent();
+                intentcall.setAction(Intent.ACTION_DIAL);
+                intentcall.setData(Uri.parse("tel:08088719078"));
+                startActivity(intentcall);
+
+            }
+        });
     }
 
     private void setupBottomNavigation() {
