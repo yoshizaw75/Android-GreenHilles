@@ -24,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         setupBottomNavigation();
 
+
         if (savedInstanceState == null) {
             createFragment();
+            loadHomeFragment();
         }
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
