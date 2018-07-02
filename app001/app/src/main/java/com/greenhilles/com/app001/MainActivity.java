@@ -1,6 +1,5 @@
 package com.greenhilles.com.app001;
 
-import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,13 +71,14 @@ public class MainActivity extends AppCompatActivity {
     private HomeFragment homeFragment;
     private ReservationFragment reserveFragment;
     private BlogFragment blogFragment;
+    private WebViewFragment webFragment;
     private FragmentTransaction ft;
 
     private  void createFragment(){
         homeFragment = HomeFragment.newInstance();
         reserveFragment = ReservationFragment.newInstance();
         blogFragment = BlogFragment.newInstance();
-
+        webFragment = WebViewFragment.newInstance();
     }
 
     private void loadHomeFragment() {
@@ -95,5 +94,10 @@ public class MainActivity extends AppCompatActivity {
     private void loadBlogfragment() {
         getSupportActionBar().hide();
         getFragmentManager().beginTransaction().replace(R.id.fragment_frame, blogFragment).commit();
+    }
+
+    private void loadWebfragment() {
+        getSupportActionBar().hide();
+        getFragmentManager().beginTransaction().replace(R.id.fragment_frame, webFragment).commit();
     }
 }

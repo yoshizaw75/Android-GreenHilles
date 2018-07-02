@@ -10,7 +10,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.util.*;
+
+
 
 /**
  * Created by toshiyukiyoshizawa on 2018/05/15.
@@ -27,6 +31,29 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View rootView =inflater.inflate(R.layout.home, container, false);
+
+        //IDからオブジェクトを取得
+        ImageButton button  = (ImageButton)rootView.findViewById(R.id.ImageButtonGuid);
+
+        //リスナーを登録
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("button:", "clicked!");
+            }
+        });
+
+        /*
+        ImageButton button = rootView.findViewById(R.id.ImageButtonGuid);
+        button.setOnClickListener(new ImageButton().OnClickListener() {
+            @Override
+            public void onClick(ImageButton view) {
+                WebViewFragment webFragment = WebViewFragment.newInstance();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_frame, webFragment).commit();
+            }
+        });
+        */
+
 
         ListView bannerList = (ListView)rootView.findViewById(R.id.BannerListView);
         ArrayList<Map<String, Object>> list_data
