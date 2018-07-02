@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -56,36 +57,44 @@ public class ImageListAdapter extends SimpleAdapter {
         // この行のためのデータを読み出し
         Map<String, Object> data_for_this_line = list_data.get(position);
 
-        // この行のためのテキストをセット
-        String text_for_this_line
-                = data_for_this_line.get("name").toString();
-        Log.d("ListViewTest", position + "のtextは" + text_for_this_line);
-        TextView tv = (TextView)v.findViewById(R.id.textView1);
-        tv.setText( text_for_this_line );
-
 
         /* ---------- 行内の画像をロードして描画 ------------ */
 
         // 行内の画像ビュー
-        ImageView imageView = (ImageView)v.findViewById(R.id.ImageView1);
+        ImageButton imageView1 = (ImageButton)v.findViewById(R.id.BannerImage1);
 
         // 画像のURL
-        String img_url = data_for_this_line.get("imgUrl").toString();
-        // ※Yahooのロゴ
-
+        String img_url1 = data_for_this_line.get("imgUrl_1").toString();
+        imageView1.setTag(img_url1);
         // 非同期で画像読込を実行
         try{
             Log.d("ListViewTest", position + "の画像読み込みを開始");
 
-            DownloadImageTask task
-                    = new DownloadImageTask(imageView, context);
-            task.execute(img_url);
+            DownloadImageTask task1
+                    = new DownloadImageTask(imageView1, context);
+            task1.execute(img_url1);
         }
         catch(Exception e){
             //
             Log.d("ListViewTest", position + "の画像読み込みに失敗");
         }
 
+        ImageButton imageView2 = (ImageButton)v.findViewById(R.id.BannerImage2);
+        // 画像のURL
+        String img_url2 = data_for_this_line.get("imgUrl_2").toString();
+        imageView2.setTag(img_url2);
+        // 非同期で画像読込を実行
+        try{
+            Log.d("ListViewTest2", position + "の画像読み込みを開始");
+
+            DownloadImageTask task2
+                    = new DownloadImageTask(imageView2, context);
+            task2.execute(img_url2);
+        }
+        catch(Exception e){
+            //
+            Log.d("ListViewTest2", position + "の画像読み込みに失敗");
+        }
         /* ---------- 行の描画が完了 ------------ */
 
         return v;

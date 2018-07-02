@@ -3,27 +3,33 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearLayout1"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="horizontal"
     >
 
-    <!-- とりあえずHelloWorldを表示 -->
-    <TextView
-        android:id="@+id/textView1"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        ></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/BannerImage1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/BannerImage2"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
-    <!-- Web上から読み込む画像。初期状態ではアプリのアイコンを表示 -->
-    <ImageView
-        android:id="@+id/ImageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:adjustViewBounds="true"
-        ></ImageView>
 
 </LinearLayout>

@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_anchorGravity="top">
+    >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="3">
+        android:background="@color/colorAccent">
         <!-- TOP Button Area -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginBottom="20dp"
             android:gravity="top"
-            android:layout_weight="1"
             android:weightSum="2">
             <!-- First Line Button -->
             <LinearLayout
@@ -142,29 +142,47 @@
                         android:textSize="14dp"
                         android:text="イベント情報"/>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:id="@+id/ImageButtonEvent2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:layout_weight="1"
+                        android:src="@drawable/icon_event"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="center"
+                        android:fontFamily="serif-monospace"
+                        android:textSize="14dp"
+                        android:text="イベント情報"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
         <!-- Banner Area -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
-            android:layout_weight="1"
+            android:layout_height="500dp"
             android:orientation="vertical"
-            android:id="@+id/BannerArea">
+            android:layout_weight="1"
+            android:id="@+id/BannerArea"
+            android:background="@color/colorPrimary">
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/BannerListView"></ListView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hoge"/>
+                android:layout_height="match_parent"
+                android:id="@+id/BannerListView">
+            </ListView>
+
         </LinearLayout>
+
     </LinearLayout>
-
-
-
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.greenhilles.com.app001;
 
+import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
@@ -82,14 +83,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadHomeFragment() {
+        getSupportActionBar().show();
         getFragmentManager().beginTransaction().replace(R.id.fragment_frame, homeFragment).commit();
     }
 
     private void loadReservationfragment() {
+        getSupportActionBar().hide();
         getFragmentManager().beginTransaction().replace(R.id.fragment_frame, reserveFragment).commit();
     }
 
     private void loadBlogfragment() {
+        getSupportActionBar().hide();
         getFragmentManager().beginTransaction().replace(R.id.fragment_frame, blogFragment).commit();
     }
 }

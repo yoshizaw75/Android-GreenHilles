@@ -33,22 +33,24 @@ public class HomeFragment extends Fragment {
                 = new ArrayList<Map<String, Object>>();
 
         HashMap<String, Object> map1 = new HashMap<String, Object>();
-        map1.put("name", "fuga1");
-        map1.put("imgUrl", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map1.put("imgUrl_1", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map1.put("linkUrl_1", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map1.put("imgUrl_2", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map1.put("linkUrl_2", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
         list_data.add(map1);
 
         HashMap<String, Object> map2 = new HashMap<String, Object>();
-        map2.put("name", "fuga2");
-        map2.put("imgUrl", "http://k.yimg.jp/images/top/sp/logo.gif");
+        map2.put("imgUrl_1", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map2.put("linkUrl_1", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map2.put("imgUrl_2", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map2.put("linkUrl_2", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
         list_data.add(map2);
 
         HashMap<String, Object> map3 = new HashMap<String, Object>();
-        map3.put("name", "fuga3");
-        map3.put("imgUrl", "http://k.yimg.jp/images/top/sp/logo.gif");
-        list_data.add(map3);
-        list_data.add(map3);
-        list_data.add(map3);
-        list_data.add(map3);
+        map3.put("imgUrl_1", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map3.put("linkUrl_1", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map3.put("imgUrl_2", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
+        map3.put("linkUrl_2", "http://www.ghfutsal.jp/img/wp/campaign/banner-ouen2018.jpg");
         list_data.add(map3);
 
 

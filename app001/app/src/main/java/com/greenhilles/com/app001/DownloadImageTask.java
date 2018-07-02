@@ -8,6 +8,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 /**
@@ -15,13 +18,16 @@ import android.widget.ImageView;
  *
  */
 class DownloadImageTask extends AsyncTask<String,Void,Bitmap> {
-    private ImageView imageView;
+    private ImageButton imageView;
     private Context context;
+    private String tag;
 
     // 初期化
-    public DownloadImageTask(ImageView imageView, Context context) {
+    public DownloadImageTask(ImageButton imageView, Context context) {
         this.imageView = imageView;
         this.context = context;
+        // ImageView に設定したタグをメンバへ
+        this.tag = imageView.getTag().toString();
     }
 
     // execute時のタスク本体。画像をビットマップとして読み込んで返す
@@ -50,9 +56,11 @@ class DownloadImageTask extends AsyncTask<String,Void,Bitmap> {
     // タスク完了時
     @Override
     protected void onPostExecute(Bitmap result) {
-        if(result != null){
-            Log.d("ListViewTest", "ビューに画像をセット");
-            imageView.setImageBitmap(result);
+        if (this.tag.equals(this.imageView.getTag())) {
+            if (result != null) {
+                this.imageView.setImageBitmap(result);
+                this.imageView.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
